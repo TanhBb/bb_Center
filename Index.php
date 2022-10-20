@@ -46,7 +46,7 @@
               <a class="nav-link" href="?page=content">Shop</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="?page=about">About Us</a>
+              <a class="nav-link" href="?page=about">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="?page=search&&gender=Men">Men</a>
