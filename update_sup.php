@@ -19,11 +19,12 @@
     include_once("connection.php");
     if (isset($_GET["id"])) {
         $id = $_GET["id"];
-        $result = pg_query($conn, "SELECT * FROM category where cat_id='$id'");
+        $result = pg_query($conn, "SELECT * FROM suplier where sup_id='$id'");
         $row = pg_fetch_array($result);
-        $cat_name = $row['cat_name'];
-        $cat_des = $row['cat_des'];
-        $cat_id = $row['cat_id'];
+        $sup_name = $row['sup_name'];
+        $sup_phone = $row['sup_phone'];
+        $sup_mail = $row['sup_mail'];
+        $sup_id = $row['sup_id'];
 
 
 
@@ -33,24 +34,31 @@
            <h2> Updating Product Category</h2>
            <form id="updatebrand" name="updatebrand" method="post" action="" class="form-horizontal" role="form" onsubmit="return updatecat()">
                <div class="form-group">
-                   <label for="txtTen" class="col-sm-2 control-label">Category ID(*): </label>
+                   <label for="txtTen" class="col-sm-2 control-label">Suplier ID(*): </label>
                    <div class="col-sm-10">
-                       <input type="text" name="txtID" id="txtID" class="form-control" placeholder="Catepgy ID" readonly value='<?php echo $cat_id; ?>'>
+                       <input type="text" name="txtID" id="txtID" class="form-control" placeholder="Suplier ID" readonly value='<?php echo $sup_id; ?>'>
                    </div>
                </div>
                <div class="form-group">
-                   <label for="txtTen" class="col-sm-2 control-label">Category Name(*): </label>
+                   <label for="txtTen" class="col-sm-2 control-label">Suplier Name(*): </label>
                    <div class="col-sm-10">
-                       <input type="text" name="txtName" id="txtName" class="form-control" placeholder="Catepgy Name" value='<?php echo $cat_name; ?>'>
+                       <input type="text" name="txtName" id="txtName" class="form-control" placeholder="Suplier Name" value='<?php echo $sup_name; ?>'>
                    </div>
                </div>
 
                <div class="form-group">
-                   <label for="txtMoTa" class="col-sm-2 control-label">Description(*): </label>
+                   <label for="txtMoTa" class="col-sm-2 control-label">Suplier Phone(*): </label>
                    <div class="col-sm-10">
-                       <input type="text" name="txtDes" id="txtDes" class="form-control" placeholder="Description" value='<?php echo $cat_des ?>'>
+                       <input type="text" name="txtPhone" id="txtPhone" class="form-control" placeholder="Phone" value='<?php echo $sup_phone ?>'>
                    </div>
                </div>
+               <div class="form-group">
+                   <label for="txtMoTa" class="col-sm-2 control-label">Suolier Email(*): </label>
+                   <div class="col-sm-10">
+                       <input type="text" name="txtmail" id="txtmail" class="form-control" placeholder="Email" value='<?php echo $sup_mail ?>'>
+                   </div>
+               </div>
+
 
                <div class="form-group">
                    <div class="col-sm-offset-2 col-sm-10">
@@ -67,22 +75,23 @@
         if (isset($_POST["btnUpdate"])) {
             $id = $_POST["txtID"];
             $name = $_POST["txtName"];
-            $des = $_POST["txtDes"];
+            $phone = $_POST["txtPhone"];
+            $mail = $_POST["txtmail"];
             $err = "";
             if ($name == "") {
-                $err .= "<li> Enter Category Name, please</li>";
+                $err .= "<li> Enter Suplier Name, please</li>";
             }
             if ($err != "") {
                 echo "<ul>$err<ul>";
             } else {
-                $sq = "SELECT * FROM public.category WHERe cat_id <> '$id' and cat_name='$name'";
+                $sq = "SELECT * FROM public.suplier WHERe sup_id <> '$id' and sup_name='$name'";
                 $result = pg_query($conn, $sq);
                 if (pg_num_rows($result) == 0) {
-                    pg_query($conn, " UPDATE public.category SET cat_name ='$name', cat_des='$des' where cat_id='$id'");
+                    pg_query($conn, " UPDATE public.suplier SET sup_name ='$name', sup_phone = '$phone', sup_mail ='$mail' where sup_id='$id'");
                     echo "<script>alert('Update successfully')</script>";
-                    echo '<meta http-equiv="refresh" content="0;URL=?page=management"/>';
+                    echo '<meta http-equiv="refresh" content="0;URL=?page=managementsup"/>';
                 } else {
-                    echo "<li>Duplicate Category Name </li>";
+                    echo "<li>Duplicate Suplier Name </li>";
                 }
             }
         }
@@ -92,7 +101,7 @@
 
    <?php
     } else {
-        echo '<meta http-equiv="refesh" content="0;ULR=category_management.php"/>';
+        echo '<meta http-equiv="refesh" content="0;ULR=sup_management.php"/>';
     }
 
     ?>

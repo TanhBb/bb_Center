@@ -2,14 +2,14 @@
 <?php
 //Get custmer information
 include_once("connection.php");
-$query = "SELECT CusName, Address, email, telephone FROM customer
-        WHERE Username='" . $_SESSION["us"] . "'";
-$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
-$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$query = "SELECT * FROM public.user
+        WHERE username ='" . $_SESSION["us"] . "'";
+$result = pg_query($conn, $query) or die(pg_errormessage($conn));
+$row = pg_fetch_array($result);
 $us = $_SESSION["us"];
-$email = $row["email"];
-$fullname = $row["CusName"];
-$address = $row["Address"];
+$email = $row["us_mail"];
+$fullname = $row["us_name"];
+$address = $row["address"];
 $telephone  = $row["telephone"];
 
 //Update information when the user presses the "Update" button
@@ -25,21 +25,21 @@ if (isset($_POST['btnUpdate'])) {
         if ($passnew == "" || $repass == "") {
             echo "<script>alert('New password and confirm passwrod can not be blank!')</script>";
         } elseif ($passnew == $repass) {
-            $sql = "SELECT Password FROM customer WHERE Username = '" . $_SESSION["us"] . "'";
-            $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-            $rows = mysqli_fetch_array($res, MYSQLI_ASSOC);
-            $oldpass = $rows["Password"];
+            $sql = "SELECT * FROM public.user WHERE username = '" . $_SESSION["us"] . "'";
+            $res = pg_query($conn, $sql) or die(pg_errormessage($conn));
+            $rows = pg_fetch_array($res);
+            $oldpass = $rows["password"];
             $tempPass = md5($crupass);
 
             if ($oldpass == $tempPass) {
                 $pa = md5($passnew);
-                $sq = "UPDATE customer
-                SET Password = '$pa',
-                    Cusname = '$name',
+                $sq = "UPDATE public.user
+                SET password = '$pa',
+                    us_name = '$name',
                     telephone= '$phone',
-                    Address = '$address'
-                WHERE Username ='" . $_SESSION['us'] . "'";
-                mysqli_query($conn, $sq) or die(mysqli_error($conn));
+                    address = '$address'
+                WHERE username ='" . $_SESSION['us'] . "'";
+                pg_query($conn, $sq) or die(pg_errormessage($conn));
                 echo "<script>alert('Updating successfully!')</script>";
 
                 echo '<meta http-equiv="refresh" content="5;URL=index.php"';
@@ -50,11 +50,13 @@ if (isset($_POST['btnUpdate'])) {
             echo "<script>alert('New password and confirm password is incorrect!')</script>";
         }
     } else {
-        $sq = "UPDATE customer
-                    SET Cusname = '$name',
-                        Address = '$address'telephone = '$phone',
-            WHERE Username ='" . $_SESSION['us'] . "'";
-        mysqli_query($conn, $sq) or die(mysqli_error($conn));
+        $sq = "UPDATE public.user
+        SET 
+            us_name = '$name',
+            telephone= '$phone',
+            address = '$address'
+        WHERE username ='" . $_SESSION['us'] . "'";
+        pg_query($conn, $sq) or die(pg_errormessage($conn));
         echo "<script>alert('Updating successfully!')</script>";
         echo '<meta http-equiv="refresh" content="0;URL=index.php"';
     }

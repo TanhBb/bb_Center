@@ -23,7 +23,7 @@ if (isset($_SESSION['us']) == false) {
         if (isset($_GET["function"]) == "del") {
             if (isset($_GET["id"])) {
                 $id = $_GET["id"];
-                pg_query($conn, "DELETE FROM public.category WHERE cat_id='$id'");
+                pg_query($conn, "DELETE FROM public.shop WHERE shop_id='$id'");
                 
             }
         }
@@ -31,11 +31,11 @@ if (isset($_SESSION['us']) == false) {
 
         <form name="frm" method="post" action="">
             <div class="container">
-                <h1 class="text-center"> Category Management</h1>
+                <h1 class="text-center"> Shop Management</h1>
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-sm-3">
-                            <h2>Management</h2>
+                            <h2>Management Systems</h2>
                             <div class="list-group list-group-flush">
                                 <a href="?page=management" class="list-group-item list-group-item-action py-2">Category</a>
                                 <a href="?page=managementpro" class="list-group-item list-group-item-action py-2">Product</a>
@@ -47,15 +47,17 @@ if (isset($_SESSION['us']) == false) {
                         </div>
                         <div class="col-sm-9">
                             <p>
-                                <img src="Image/add.png" alt="Add new" width="16" height="16" border="0" />
-                                <a href="?page=addcategory"> Add</a>
+                                <img src="image/add.png" alt="Add new" width="16" height="16" border="0" />
+                                <a href="?page=addshop"> Add</a>
                             </p>
                             <table id="tablecategory" class="table table-striped table-bordered" width="100">
                                 <thead>
                                     <tr>
                                         <th><strong>No.</strong></th>
-                                        <th><strong>Category Name</strong></th>
-                                        <th><strong>Description</strong></th>
+                                        <th><strong>Shop Name</strong></th>
+                                        <th><strong>Phone</strong></th>
+                                        <th><strong>Mail</strong></th>
+                                        <th><strong>Address</strong></th>
                                         <th><strong>Edit</strong></th>
                                         <th><strong>Delete</strong></th>
                                     </tr>
@@ -65,19 +67,21 @@ if (isset($_SESSION['us']) == false) {
                                     <?php
                                     include_once("connection.php");
                                     $No = 1;
-                                    $result = pg_query($conn, "SELECT * FROM category");
+                                    $result = pg_query($conn, "SELECT * FROM shop");
                                     while ($row = pg_fetch_array($result)) {
                                     ?>
                                         <tr>
                                             <td><?php echo $No; ?></td>
-                                            <td><?php echo $row["cat_name"]; ?></td>
-                                            <td><?php echo $row["cat_des"]; ?></td>
+                                            <td><?php echo $row["shop_name"]; ?></td>
+                                            <td><?php echo $row["shop_phone"]; ?></td>
+                                            <td><?php echo $row["shop_mail"]; ?></td>
+                                            <td><?php echo $row["shop_address"]; ?></td>
                                             <td style='text-align:center'>
-                                                <a href="?page=updatecategory&&id=<?php echo $row["cat_id"]; ?>">
+                                                <a href="?page=updateshop&&id=<?php echo $row["shop_id"]; ?>">
                                                     <img src="image/edit1.png" border='0'></a>
                                             </td>
                                             <td style='text-align:center'>
-                                                <a href="?page=management&&function=del&&id=<?php echo $row["cat_id"]; ?>" onclick="return deleteConfirm()">
+                                                <a href="?page=managementshop&&function=del&&id=<?php echo $row["shop_id"]; ?>" onclick="return deleteConfirm()">
                                                     <img src='image/delete1.png' border='0' /></a>
                                             </td>
                                         </tr>

@@ -59,9 +59,6 @@ if (isset($_POST['btnRegister'])) {
     if (isset($_POST['grpRender'])) {
         $sex = $_POST['grpRender'];
     }
-    $date = $_POST['slDate'];
-    $month = $_POST['slMonth'];
-    $year = $_POST['slYear'];
 
     $err = "";
     if (
@@ -77,20 +74,17 @@ if (isset($_POST['btnRegister'])) {
     if ($pass1 != $pass2) {
         $err . "<li>Password and confirm password are not the same</li>";
     }
-    if ($_POST['slYear'] == "0") {
-        $err .= "<li>Choose Year of Birth, please</li>";
-    }
 
     if ($err != "") {
         echo $err;
     } else {
         include_once("connection.php");
         $pass = md5($pass1);
-        $sq = "Select * from customer where Username = '$us' or email = '$email'";
-        $res = mysqli_query($conn, $sq);
-        if (mysqli_num_rows($res) == 0) {
-            mysqli_query($conn, "INSERT INTO customer(Username, Password, Cusname, gender, Address, telephone, email, CusDate, CusMonth, CusYear,state) 
-        Values ('$us','$pass','$fullname','$sex','$address','$tel','$email',$date, $month, $year, 0)") or die(mysqli_error($conn));
+        $sq = "SELECT * from public.user where username = '$us' or us_mail = '$email'";
+        $res = pg_query($conn, $sq);
+        if (pg_num_rows($res) == 0) {
+            pg_query($conn, "INSERT INTO public.user (username, password, us_name, gender, address, telephone, us_mail, role) 
+        Values ('$us','$pass','$fullname','$sex','$address', $tel ,'$email', false)") or die(pg_errormessage($conn));
             echo "<script>alert('Create account successfully')</script>";
             echo '<meta http-equiv="refresh" content="0;URL=?page=login" />';
         } else {
@@ -163,43 +157,6 @@ if (isset($_POST['btnRegister'])) {
 
                     Female</label>
 
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="lblNgaySinh" class="col-sm-2 control-label">Date of Birth(*): </label>
-            <div class="col-sm-10 input-group">
-                <span class="input-group-btn">
-                    <select name="slDate" id="slDate" class="form-control">
-                        <option value="0">Choose Date</option>
-                        <?php
-                        for ($i = 1; $i <= 31; $i++) {
-                            echo "<option value='" . $i . "'>" . $i . "</option>";
-                        }
-                        ?>
-                    </select>
-                </span>
-                <span class="input-group-btn">
-                    <select name="slMonth" id="slMonth" class="form-control">
-                        <option value="0">Choose Month</option>
-                        <?php
-                        for ($i = 1; $i <= 12; $i++) {
-                            echo "<option value='" . $i . "'>" . $i . "</option>";
-                        }
-
-                        ?>
-                    </select>
-                </span>
-                <span class="input-group-btn">
-                    <select name="slYear" id="slYear" class="form-control">
-                        <option value="0">Choose Year</option>
-                        <?php
-                        for ($i = 1970; $i <= 2020; $i++) {
-                            echo "<option value='" . $i . "'>" . $i . "</option>";
-                        }
-                        ?>
-                    </select>
-                </span>
             </div>
         </div>
         <div class="form-group">

@@ -2,8 +2,8 @@
   <header>
     <!-- Background image -->
     <div class="p-5 text-center bg-image" style="
-      background-image: url(Image/home.jpg);
-      height: 800px; background-size: 100% 130%;">
+      background-image: url(image/sale.jpg);
+      height: 900px; background-size: 100% 130%;">
       <div class="mask mt-5 m-5 p-5" style="background-color: rgba(0, 0, 0, 0.6);">
         <div class=" mt-5 d-flex justify-content-center align-items-center h-100">
           <div class="text-white">
@@ -17,10 +17,10 @@
     </div>
     <!-- Background image -->
   </header>
-
+  
   <br>
 
-  <!--Brands-->
+  <!-- Brands
   <section id="brand" class="container-fluid">
     <div class="row">
       <img class="img-fluid col-lg-2 col-md-4 col-6" src="Image/brand1.png" alt="brand1">
@@ -31,35 +31,35 @@
       <img class="img-fluid col-lg-2 col-md-4 col-6" src="Image/bra6.png" alt="brand6">
     </div>
   </section>
-  <br>
+  <br> -->
   <!--NEW-->
   <section id="new" class="container-fluid w-100 ">
     <div class="row p-0 m-0">
       <div class="one col-lg-4 col-md-12 col-12 p-0">
-        <img class="img-fluid" src="Image/new1.jpg" alt="">
+        <img class="img-fluid" src="image/new.jpg" alt="">
         <div class="details">
           <h3>New Product</h3>
           <a href="?page=content"><button class="text-uppercase"> Shop Now</button></a>
         </div>
       </div>
       <div class="one col-lg-4 col-md-12 col-12 p-0">
-        <img class="img-fluid" src="Image/new2.png " alt="">
+        <img class="img-fluid" src="image/trend.jpg " alt="">
         <div class="details">
-          <h3>Trending</h3>
+          <h3>Best Saller</h3>
           <a href="?page=content"><button class="text-uppercase"> Shop Now</button></a>
         </div>
       </div>
       <div class="one col-lg-4 col-md-12 col-12 p-0">
-        <img class="img-fluid" src="Image/new3.png" alt="">
+        <img class="img-fluid" src="image/sale.jpg" alt="">
         <div class="details">
-          <h3>Best Saller</h3>
+          <h3>Sale of</h3>
           <a href="?page=content"><button class="text-uppercase"> Shop Now</button></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!--Poppular products-->
+  <!-- Poppular products
   <section id="featured" class="my-5 pb-5">
     <div class="container text-center mt-5 py-5">
       <h5>The Limited Edition Watch</h5>
@@ -69,17 +69,16 @@
     <div class="row mx-auto container-fluid">
       <?php
       include_once("connection.php");
-      $result = mysqli_query($conn, "SELECT Product_ID, Product_Name, Cat_Name, Price, Pro_image 
-            FROM category c, product p WHERE c.Cat_ID = p.Cat_ID");
+      $result = pg_query($conn, "SELECT * FROM category c, product p WHERE c.cat_id = p.cat_id");
       if (!$result) {
         echo "$err";
       }
       $no = 1;
-      while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+      while ($row = pg_fetch_array($result)) {
         if ($no <= 4) {
       ?>
           <div class="product text-center col-lg-3 col-md-4 col-12">
-            <img class="img-fluid mb-3" src="Image/<?php echo $row['Pro_image'] ?>" height="450" width="300">
+            <img class="img-fluid mb-3" src="image/<?php echo $row['pro_image'] ?>" height="450" width="300">
             <div class="star">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -88,9 +87,9 @@
               <i class="bi bi-star-fill"></i>
             </div>
             <b>
-              <h8 class="p-name"><?php echo $row['Product_Name'] ?>
+              <h8 class="p-name"><?php echo $row['pro_name'] ?>
             </b></h8><br>
-            <h7 class="p-price"><?php echo $row['Price'] ?>$</h7><br>
+            <h7 class="p-price"><?php echo $row['price'] ?>$</h7><br>
             <div>
               <a href="?page=viewdetail&&id=<?php echo $row['Product_ID'] ?>"> <button class="buy-btn">View Details</button></a>
             </div>
@@ -102,7 +101,7 @@
       }
       ?>
     </div>
-  </section>
+  </section> -->
 
 
 

@@ -15,11 +15,11 @@
         echo $err;
       } else {
         $pass = md5($pa);
-        $res = mysqli_query($conn, "SELECT Username, Password, state FROM customer WHERE Username = '$us' AND Password = '$pass'") or die(mysqli_error($conn));
-        $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
-        if (mysqli_num_rows($res) == 1) {
+        $res = pg_query($conn, "SELECT username, password, role FROM public.user WHERE username = '$us' AND password = '$pass'") or die(($conn));
+        $row = pg_fetch_array($res);
+        if (pg_num_rows($res) == true) {
           $_SESSION['us'] = $us;
-          $_SESSION['admin'] = $row['state'];
+          $_SESSION['admin'] = $row['role'];
           echo "<script>alert('You are login Successfully')</script>";
           echo '<meta http-equiv="refresh" content="0;URL=Index.php" />';
         } else {

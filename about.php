@@ -1,7 +1,7 @@
 <div class="p-5 text-center bg-image" style="
-      background-image: url(Image/item3.jpg);
-      height: 800px; background-size: 100% 100%;">
-  <div class="mask mt-5 m-5 p-5" style="background-color: rgba(0, 0, 0, 0.6);">
+      background-image: url(Image/about.jpg);
+      height: 800px; background-size: 100% 120%;">
+  <div class="mask mt-5 m-5 p-5" style="background-color: rgba(0, 0, 0, 0.4);">
     <div class=" mt-5 d-flex justify-content-center align-items-center h-200">
       <div class="text-white">
         <h2 class="mb-3">ABOUT</h2>

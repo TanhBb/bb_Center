@@ -30,7 +30,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light py-4 ">
       <div class="container-fluid mx-md-5 row">
         <div class="col-2">
-          <a href="Index.PHP"><img src="Image/lg.png" class="logo" alt="Logo">
+          <a href="Index.PHP"><img src="image/logo1.png" class="logo" alt="Logo" >
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -48,12 +48,12 @@
             <li class="nav-item">
               <a class="nav-link" href="?page=about">About</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="?page=search&&gender=Men">Men</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="?page=search&&gender=Women">Women</a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a class="nav-link" href="?page=management">Management</a>
             </li>
@@ -120,7 +120,25 @@
         include_once("about.php");
       } elseif ($page == "cart") {
         include_once("shopping_cart.php");
+      }elseif ($page == "addsup") {
+        include_once("add_sup.php");
+      }elseif ($page == "updatesup") {
+        include_once("update_sup.php");
+      }elseif ($page == "managementsup") {
+        include_once("sup_management.php");
+      }elseif ($page == "addshop") {
+        include_once("add_shop.php");
+      }elseif ($page == "updateshop") {
+        include_once("update_shop.php");
+      }elseif ($page == "managementshop") {
+        include_once("shop_management.php");
       }
+
+
+
+
+
+      
     } else {
       include_once("Introduction.php");
     }

@@ -3,7 +3,7 @@ if (isset($_SESSION['us']) == false) {
     echo "<script>alert('You must be LOG-IN')</script>";
     echo '<meta http-equiv="refresh" content="0;URL=?page=login"/>';
 } else {
-    if (isset($_SESSION['admin']) && $_SESSION['admin'] != 1) {
+    if (isset($_SESSION['admin']) && $_SESSION['admin'] != true) {
         echo "<script>alert('You are not administrator')</script>";
         echo '<meta http-equiv="refresh" content="0;URL=index.php"/>';
     } else {
@@ -25,12 +25,12 @@ if (isset($_SESSION['us']) == false) {
         if (isset($_GET["function"]) == "del") {
             if (isset($_GET["id"])) {
                 $id = $_GET["id"];
-                $sq = "SELECT Pro_image FROM product WHERE Product_ID='$id'";
-                $res = mysqli_query($conn, $sq);
-                $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
-                $filePic = $row['Pro_image'];
-                unlink("Image/" . $filePic);
-                mysqli_query($conn, "DELETE FROM product WHERE Product_ID='$id'");
+                $sq = "SELECT pro_image FROM product WHERE pro_id = '$id'";
+                $res = pg_query($conn, $sq);
+                $row = pg_fetch_array($res);
+                $filePic = $row['pro_image'];
+                unlink("image/" . $filePic);
+                pg_query($conn, "DELETE FROM product WHERE pro_id='$id'");
             }
         } else {
             '<meta http-equiv="refresh" content="0;URL=?page=managementpro"/>';
@@ -45,8 +45,10 @@ if (isset($_SESSION['us']) == false) {
                     <div class="col-sm-3">
                         <h2>Management</h2>
                         <div class="list-group list-group-flush">
-                            <a href="?page=management" class="list-group-item list-group-item-action py-2">CATEGORY</a>
-                            <a href="?page=managementpro" class="list-group-item list-group-item-action py-2">PRODUCT</a>
+                        <a href="?page=management" class="list-group-item list-group-item-action py-2">Category</a>
+                                <a href="?page=managementpro" class="list-group-item list-group-item-action py-2">Product</a>
+                                <a href="?page=managementshop" class="list-group-item list-group-item-action py-2">Shop</a>
+                                <a href="?page=managementsup" class="list-group-item list-group-item-action py-2">Suplier</a>
                         </div>
                         <hr class="d-sm-none">
 
@@ -61,11 +63,12 @@ if (isset($_SESSION['us']) == false) {
                                 <thead>
                                     <tr>
                                         <th><strong>No.</strong></th>
-                                        <th><strong>Product ID</strong></th>
-                                        <th><strong>Product Name</strong></th>
+                                        <th><strong> ID</strong></th>
+                                        <th><strong> Name</strong></th>
                                         <th><strong>Price</strong></th>
                                         <th><strong>Quantity</strong></th>
-                                        <th><strong>Category ID</strong></th>
+                                        <th><strong>Category </strong></th>
+                                        <th><strong>Suplier </strong></th>
                                         <th><strong>Image</strong></th>
                                         <th><strong>Edit</strong></th>
                                         <th><strong>Delete</strong></th>
@@ -76,28 +79,28 @@ if (isset($_SESSION['us']) == false) {
                                     <?php
                                     include_once("connection.php");
                                     $No = 1;
-                                    $result = mysqli_query($conn, "SELECT * FROM product p, category c WHERE p.Cat_ID = c.Cat_ID");
-                                    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                                    $result = pg_query($conn, "SELECT * FROM public.product p, public.category c, public.suplier d WHERE p.cat_id = c.cat_id and p.sup_id = d.sup_id  ");
+                                    while ($row = pg_fetch_array($result)) {
                                     ?>
                                         <tr>
                                             <td><?php echo $No; ?></td>
-                                            <td><?php echo $row["Product_ID"]; ?></td>
-                                            <td><?php echo $row["Product_Name"]; ?></td>
-                                            <td><?php echo $row["Price"]; ?></td>
-                                            <td><?php echo $row["Pro_qty"]; ?></td>
-                                            <td><?php echo $row["Cat_Name"]; ?></td>
+                                            <td><?php echo $row["pro_id"]; ?></td>
+                                            <td><?php echo $row["pro_name"]; ?></td>
+                                            <td><?php echo $row["price"]; ?></td>
+                                            <td><?php echo $row["pro_qty"]; ?></td>
+                                            <td><?php echo $row["cat_name"]; ?></td>
+                                            <td><?php echo $row["sup_name"]; ?></td>
                                             <td>
-                                                <img src="Image/<?php echo $row["Pro_image"]; ?>" border=0 height="50" width="50" alt="">
+                                                <img src="Image/<?php echo $row["pro_image"]; ?>" border=0 height="50" width="50" alt="">
                                             </td>
 
-                                            <td style='text-align:center'> <a href="?page=updateproduct&&id=<?php echo $row['Product_ID']; ?>">
-                                                    <img src='Image/edit.png' border='0' /></a></td>
+                                            <td style='text-align:center'> <a href="?page=updateproduct&&id=<?php echo $row['pro_id']; ?>">
+                                                    <img src='image/edit1.png' border='0' /></a></td>
                                             <td style='text-align:center'>
-                                                <a href="?page=managementpro&&function=del&&id=<?php echo $row["Product_ID"]; ?>" onclick="return deleteConfirm()">
-                                                    <img src='Image/delete.png' border='0' /></a>
+                                                <a href="?page=managementpro&&function=del&&id=<?php echo $row["pro_id"]; ?>" onclick="return deleteConfirm()">
+                                                    <img src='image/delete1.png' border='0' /></a>
                                             </td>
                                         </tr>
-
                                     <?php
                                         $No++;
                                     }

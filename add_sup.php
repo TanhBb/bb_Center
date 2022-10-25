@@ -18,42 +18,50 @@
 include_once("connection.php");
 if (isset($_POST["btnAdd"])) {
     $name = $_POST["txtName"];
-    $des = $_POST["txtDes"];
+    $phone = $_POST["txtPhone"];
+    $mail = $_POST["txtMail"];
     $err = "";
 
     if ($name == "") {
-        $err .= "<li> Enter Category Name, Please</li>";
+        $err .= "<li> Enter Suplier Name, Please</li>";
     }
     if ($err != "") {
         echo "<ul>$err</ul>";
     } else {
-        $sq = "SELECT * FROM public.category WHERE cat_name='$name'";
+        $sq = "SELECT * FROM public.suplier WHERE sup_name='$name'";
         $result = pg_query($conn, $sq);
         if (pg_num_rows($result) == 0) {
-            pg_query($conn, "INSERT INTO category (cat_name, cat_des) VALUES ('$name','$des')");
+            pg_query($conn, "INSERT INTO suplier (sup_name, sup_phone, sup_mail) VALUES ('$name','$phone','$mail')");
             echo "<script>alert('Add successfully')</script>";
-            echo '<meta http-equiv= "refresh" content="0;URL=?page=management"/>';
+            echo '<meta http-equiv= "refresh" content="0;URL=?page=managementsup"/>';
         } else {
-            echo "<li> Duplicate Categoy Name</li>";
+            echo "<li> Duplicate Suplier Name</li>";
         }
     }
 }
 ?>
 
 <div class="container">
-    <h2>Adding Category</h2>
+    <h2>Adding Suplier</h2>
     <form id="addbrand" name="addbrand" method="post" action="" class="form-horizontal" role="form" onsubmit="return addcat()">
         <div class="form-group">
-            <label for="txtTen" class="col-sm-2 control-label">Category Name(*): </label>
+            <label for="txtTen" class="col-sm-2 control-label">Suplier Name(*): </label>
             <div class="col-sm-10">
-                <input type="text" name="txtName" id="txtName" class="form-control" placeholder="Catepgy Name" value='<?php echo isset($_POST["txtName"]) ? ($_POST["txtName"]) : ""; ?>'>
+                <input type="text" name="txtName" id="txtName" class="form-control" placeholder="Suplier Name" value='<?php echo isset($_POST["txtName"]) ? ($_POST["txtName"]) : ""; ?>'>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="txtMoTa" class="col-sm-2 control-label">Description(*): </label>
+            <label for="txtMoTa" class="col-sm-2 control-label">Phone(*): </label>
             <div class="col-sm-10">
-                <input type="text" name="txtDes" id="txtDes" class="form-control" placeholder="Description" value='<?php echo isset($_POST["txtDes"]) ? ($_POST["txtDes"]) : ""; ?>'>
+                <input type="text" name="txtPhone" id="txtPhone" class="form-control" placeholder="Phone" value='<?php echo isset($_POST["txtPhone"]) ? ($_POST["txtPhone"]) : ""; ?>'>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="txtMoTa" class="col-sm-2 control-label">Email(*): </label>
+            <div class="col-sm-10">
+                <input type="text" name="txtMail" id="txtMail" class="form-control" placeholder="Email" value='<?php echo isset($_POST["txtMail"]) ? ($_POST["txtMail"]) : ""; ?>'>
             </div>
         </div>
 

@@ -2,11 +2,6 @@
     function addpro() {
         var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
         f = document.pro
-
-        if (format.test(f.txtID.value)) {
-            alert("Category ID invalid, please enter again");
-            return false;
-        }
         if (format.test(f.txtName.value)) {
             alert("Category name can't contain special character, please enter again");
             f.txtName.focus();
@@ -33,22 +28,49 @@
 <script type="text/javascript" src="scripts/ckeditor/ckeditor.js"></script>
 <?php
 include_once("connection.php");
+
 function bind_Category_List($conn)
 {
-    $sqlstring = "SELECT Cat_ID, Cat_Name FROM category";
-    $result = mysqli_query($conn, $sqlstring);
-    echo "<select name='CategoryList' class='from-control'>
+    $sqlstring = "SELECT cat_id, cat_name FROM public.category";
+    $result = pg_query($conn, $sqlstring);
+    echo "<select name='CategoryList' class='form-control'>
 		<option value='0'> Choose catogory</option>";
-    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    while ($row = pg_fetch_array($result)) {
 
-        echo "<option value='" . $row['Cat_ID'] . "'>" . $row['Cat_Name'] . "</option>";
+        echo "<option value='" . $row['cat_id'] . "'>" . $row['cat_name'] . "</option>";
+    }
+    echo "</select>";
+}
+
+
+function bind_Sup_List($conn)
+{
+    $sqlstring = "SELECT sup_id, sup_name FROM public.suplier";
+    $result = pg_query($conn, $sqlstring);
+    echo "<select name='SuplierList' class='form-control'>
+		<option value='0'> Choose Suplier</option>";
+    while ($row = pg_fetch_array($result)) {
+
+        echo "<option value='" . $row['sup_id'] . "'>" . $row['sup_name'] . "</option>";
+    }
+    echo "</select>";
+}
+
+function bind_Shop_List($conn)
+{
+    $sqlstring = "SELECT shop_id, shop_name FROM public.shop";
+    $result = pg_query($conn, $sqlstring);
+    echo "<select name='ShopList' class='form-control'>
+		<option value='0'> Choose Shop</option>";
+    while ($row = pg_fetch_array($result)) {
+
+        echo "<option value='" . $row['shop_id'] . "'>" . $row['shop_name'] . "</option>";
     }
     echo "</select>";
 }
 
 
 if (isset($_POST["btnAdd"])) {
-    $id = $_POST["txtID"];
     $proname = $_POST["txtName"];
     $short = $_POST["txtShort"];
     $detail = $_POST["txtDetail"];
@@ -56,11 +78,10 @@ if (isset($_POST["btnAdd"])) {
     $qty = $_POST["txtQty"];
     $pic = $_FILES["txtImage"];
     $category = $_POST["CategoryList"];
+    $sup = $_POST["SuplierList"];
+    $shop = $_POST["ShopList"];
     $err = "";
 
-    if (trim($id) == "") {
-        $err .= "<li> Enter Product ID, please</li>";
-    }
     if (trim($proname) == "") {
         $err .= "<li> Enter Product Name, please</li>";
     }
@@ -81,14 +102,14 @@ if (isset($_POST["btnAdd"])) {
             || $pic['type'] == "image/png" || $pic['type'] == "image/gif"
         ) {
             if ($pic['size'] <= 20000000) {
-                $sq = "SELECT * FROM product WHERE Product_ID='$id' OR Product_Name='$proname'";
-                $result = mysqli_query($conn, $sq);
-                if (mysqli_num_rows($result) == 0) {
+                $sq = "SELECT * FROM public.product WHERE pro_name='$proname'";
+                $result = pg_query($conn, $sq);
+                if (pg_num_rows($result) == 0) {
                     copy($pic['tmp_name'], "Image/" . $pic['name']);
                     $filePic = $pic['name'];
-                    $sqlstring = "INSERT INTO product
-					VALUES('$id', '$proname','$price','$short','$detail','" . date('Y-m-d H:i:s') . "','$qty','$filePic','$category')";
-                    mysqli_query($conn, $sqlstring);
+                    $sqlstring = "INSERT INTO public.product (pro_name, small_des, detail_des, price, pro_date, pro_qty, pro_image, cat_id, sup_id, shop_id)
+					VALUES('$proname','$short','$detail','$price','" . date('Y-m-d H:i:s') . "','$qty','$filePic','$category','$sup','$shop')";
+                    pg_query($conn, $sqlstring);
                     echo "<script>alert('Add Successfully')</script>";
                     echo '<meta http-equiv="refresh" content="0;URL=?page=managementpro"/>';
                 } else {
@@ -107,12 +128,12 @@ if (isset($_POST["btnAdd"])) {
     <h2 align="center">Adding new Product</h2>
 
     <form id="pro" name="pro" method="post" enctype="multipart/form-data" action="" class="form-horizontal" role="form"  onsubmit="return addpro()">
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="txtID" class="col-sm-2 control-label">Product ID(*): </label>
             <div class="col-sm-10">
                 <input type="text" name="txtID" id="txtID" class="form-control" placeholder="Product ID" value='' />
             </div>
-        </div>
+        </div> -->
         <div class="form-group">
             <label for="txtName" class="col-sm-2 control-label">Product Name(*): </label>
             <div class="col-sm-10">
@@ -120,9 +141,20 @@ if (isset($_POST["btnAdd"])) {
             </div>
         </div>
         <div class="form-outline">
-            <label for="" class="col-sm-2 control-label">Product Brand(*): </label>
+            <label for="" class="col-sm-2 control-label">Product Category(*): </label>
             <div class="col-sm-10">
                 <?php bind_Category_List($conn); ?>
+            </div>
+        </div>
+        <div class="form-outline">
+            <label for="" class="col-sm-2 control-label">Product Suplier(*): </label>
+            <div class="col-sm-10">
+                <?php bind_Sup_List($conn); ?>
+            </div>
+        </div> <div class="form-outline">
+            <label for="" class="col-sm-2 control-label">Product Shop(*): </label>
+            <div class="col-sm-10">
+                <?php bind_Shop_List($conn); ?>
             </div>
         </div>
 
@@ -143,7 +175,7 @@ if (isset($_POST["btnAdd"])) {
         <div class="form-group">
             <label for="lblDetail" class="col-sm-2 control-label">Detail description(*): </label>
             <div class="col-sm-10">
-                <textarea name="txtDetail" rows="9" class="ckeditor"></textarea>
+                <textarea name="txtDetail" rows="9" class="ckeditor  form-control"></textarea>
                 <script language="javascript">
                     CKEDITOR.replace('txtDetail', {
                         skin: 'kama',
