@@ -4,7 +4,8 @@
 include_once("connection.php");
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
-    $sq = "SELECT * FROM product WHERE pro_id='$id'";
+    $sq = "SELECT * FROM  product p, category c, shop d WHERE p.shop_id = d.shop_id and p.cat_id = c.cat_id and
+     pro_id='$id'";
     $res = pg_query($conn, $sq);
     $row = pg_fetch_array($res)
 
@@ -20,10 +21,12 @@ if (isset($_GET["id"])) {
                 <h2 class="box-title mt-5 class=" mb-3 id="home"><span> TOY DESCRIPTION</span> </h2>
                 <div class="white-box text-center">
                     <h4>Name: &nbsp;<?php echo $row['pro_name'] ?></h4>
+                    <h4>Category: &nbsp;<?php echo $row['cat_name'] ?></h4>
+                    <h4>Shop: &nbsp;<?php echo $row['shop_name'] ?></h4>
                     <h4>Price:&nbsp;<?php echo $row['price'] ?></h4>
                 </div>
                 <div class="white-box text-center">
-                    <?php echo $row['detail_des'] ?>
+                <h4>Discription:</h4>   <?php echo $row['detail_des'] ?>
                 </div>
                 <div>
                     <form action="?page=cart" method="POST">

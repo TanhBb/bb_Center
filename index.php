@@ -133,12 +133,6 @@
       }elseif ($page == "managementshop") {
         include_once("shop_management.php");
       }
-
-
-
-
-
-      
     } else {
       include_once("Introduction.php");
     }
