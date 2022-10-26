@@ -21,7 +21,7 @@
           $_SESSION['us'] = $us;
           $_SESSION['admin'] = $row['role'];
           echo "<script>alert('You are login Successfully')</script>";
-          echo '<meta http-equiv="refresh" content="0;URL=Index.php" />';
+          echo '<meta http-equiv="refresh" content="0;URL=index.php" />';
         } else {
           echo "<script>alert('You are login fail, Please check your password or user name')</script>";
         }
