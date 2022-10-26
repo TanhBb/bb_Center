@@ -29,7 +29,7 @@ if (isset($_SESSION['us']) == false) {
                 $res = pg_query($conn, $sq);
                 $row = pg_fetch_array($res);
                 $filePic = $row['pro_image'];
-                unlink("image/" . $filePic);
+                unlink("Image/" . $filePic);
                 pg_query($conn, "DELETE FROM product WHERE pro_id='$id'");
             }
         } else {
@@ -95,10 +95,10 @@ if (isset($_SESSION['us']) == false) {
                                             </td>
 
                                             <td style='text-align:center'> <a href="?page=updateproduct&&id=<?php echo $row['pro_id']; ?>">
-                                                    <img src='image/edit1.png' border='0' /></a></td>
+                                                    <img src='Image/edit1.png' border='0' /></a></td>
                                             <td style='text-align:center'>
                                                 <a href="?page=managementpro&&function=del&&id=<?php echo $row["pro_id"]; ?>" onclick="return deleteConfirm()">
-                                                    <img src='image/delete1.png' border='0' /></a>
+                                                    <img src='Image/delete1.png' border='0' /></a>
                                             </td>
                                         </tr>
                                     <?php

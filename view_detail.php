@@ -14,7 +14,7 @@ if (isset($_GET["id"])) {
         <div class="row">
             <div class="col-lg-6 col-md-5 col-sm-6 py-5">
                 <div class="white-box text-center">
-                    <img src="image/<?php echo $row['pro_image'] ?>" width="320" height="500" style="border-radius: 15px;">
+                    <img src="Image/<?php echo $row['pro_image'] ?>" width="320" height="500" style="border-radius: 15px;">
                 </div>
             </div>
             <div class="col-lg-6 col-md-5 col-sm-6 text-center">

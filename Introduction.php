@@ -2,7 +2,7 @@
   <header>
     <!-- Background image -->
     <div class="p-5 text-center bg-image" style="
-      background-image: url(image/bg.jpg);
+      background-image: url(Image/bg.jpg);
       height: 900px; background-size: 100% 130%;">
       <div class="mask mt-5 m-5 p-5" style="background-color: rgba(0, 0, 0, 0.6);">
         <div class=" mt-5 d-flex justify-content-center align-items-center h-100">
@@ -36,21 +36,21 @@
   <section id="new" class="container-fluid w-100 ">
     <div class="row p-0 m-0">
       <div class="one col-lg-4 col-md-12 col-12 p-0">
-        <img class="img-fluid" src="image/new.jpg" alt="">
+        <img class="img-fluid" src="Image/new.jpg" alt="">
         <div class="details">
           <h3 style="color: coral">New Product</h3>
           <a href="?page=content " ><button class="text-uppercase">  Shop Now</button></a>
         </div>
       </div>
       <div class="one col-lg-4 col-md-12 col-12 p-0">
-        <img class="img-fluid" src="image/trend.jpg " alt="">
+        <img class="img-fluid" src="Image/trend.jpg " alt="">
         <div class="details">
           <h3 style="color: coral">Best Saller</h3>
           <a href="?page=content"><button class="text-uppercase"> Shop Now</button></a>
         </div>
       </div>
       <div class="one col-lg-4 col-md-12 col-12 p-0">
-        <img class="img-fluid" src="image/sale.jpg" alt="">
+        <img class="img-fluid" src="Image/sale.jpg" alt="">
         <div class="details">
           <h3 style="color: coral">Sale of</h3>
           <a href="?page=content"><button class="text-uppercase"> Shop Now</button></a>

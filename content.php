@@ -45,7 +45,7 @@
                 <div class='container-fluid'>
                   <div class="col-sm-3 mb-5">
                     <div class="card mx-5 mt-1 " style="border-radius: 25px;">
-                      <img src="image/<?php echo $row['pro_image'] ?>" width="250px" height="350px" style="border-radius: 25px;">
+                      <img src="Image/<?php echo $row['pro_image'] ?>" width="250px" height="350px" style="border-radius: 25px;">
                       <div class="card-body text-center mx-auto">
                         <div class='cvp'>
                           <h4 class="card-title font-weight-bold"><?php echo $row['pro_name'] ?></h4>

@@ -76,11 +76,11 @@ if (isset($_SESSION['us']) == false) {
                                             <td><?php echo $row["sup_mail"]; ?></td>
                                             <td style='text-align:center'>
                                                 <a href="?page=updatesup&&id=<?php echo $row["sup_id"]; ?>">
-                                                    <img src="image/edit1.png" border='0'></a>
+                                                    <img src="Image/edit1.png" border='0'></a>
                                             </td>
                                             <td style='text-align:center'>
                                                 <a href="?page=managementsup&&function=del&&id=<?php echo $row["sup_id"]; ?>" onclick="return deleteConfirm()">
-                                                    <img src='image/delete1.png' border='0' /></a>
+                                                    <img src='Image/delete1.png' border='0' /></a>
                                             </td>
                                         </tr>
                                     <?php
