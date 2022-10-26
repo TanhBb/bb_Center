@@ -30,7 +30,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light py-4 ">
       <div class="container-fluid mx-md-5 row">
         <div class="col-2">
-          <a href="Index.PHP"><img src="Image/logo1.png" class="logo" alt="Logo" >
+          <a href="index.php"><img src="Image/logo1.png" class="logo" alt="Logo" >
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -40,7 +40,7 @@
         <div class="collapse navbar-collapse col-auto justify-content-center" id="navbarSupportedContent">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="Index.php">Home</a>
+              <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="?page=content">Shop</a>
