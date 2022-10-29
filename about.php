@@ -7,8 +7,8 @@
         <h2 class="mb-3">ABOUT Us</h2>
         <h1 class="mb-3" id="home"><span> Bb Center</span></h1>
         <p>
-        Bb Center is a commercial website dedicated to Swiss watches.
-    <br>With over 50 watch models and numerous well-known watch brands such as<br> Rolex, Zenith, Tissot, Breitling, and others.
+        Bb Center is a commercial website dedicated to children's toys.
+    <br>With over 50 toys models and numerous well-known toys brands such as<br> tanh1, tanh2, tanh3 and others.
     <br>At Bb Center, we guarantee you will have a wonderful shopping experience.
     <br>Furthermore, product quality is always a high concern for us, so you can be confident in the quality.
         </p>
