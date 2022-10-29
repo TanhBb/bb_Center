@@ -59,10 +59,10 @@
     </div>
   </section>
 
-  <!-- Poppular products
+  Poppular products
   <section id="featured" class="my-5 pb-5">
     <div class="container text-center mt-5 py-5">
-      <h5>The Limited Edition Watch</h5>
+      <h5>The Limited Edition Toys</h5>
       <hr>
       <p><b>Here you can check out our new products with fair price on Bb Center</b></p>
     </div>
@@ -91,7 +91,7 @@
             </b></h8><br>
             <h7 class="p-price"><?php echo $row['price'] ?>$</h7><br>
             <div>
-              <a href="?page=viewdetail&&id=<?php echo $row['Product_ID'] ?>"> <button class="buy-btn">View Details</button></a>
+              <a href="?page=viewdetail&&id=<?php echo $row['pro_id'] ?>"> <button class="buy-btn">View Details</button></a>
             </div>
 
           </div>
@@ -101,7 +101,7 @@
       }
       ?>
     </div>
-  </section> -->
+  </section>
 
 
 
