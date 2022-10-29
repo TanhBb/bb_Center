@@ -4,7 +4,7 @@
   <div class="mask mt-5 m-5 p-5" style="background-color: rgba(0, 0, 0, 0.4);">
     <div class=" mt-5 d-flex justify-content-center align-items-center h-200">
       <div class="text-white">
-        <h2 class="mb-3">ABOUT</h2>
+        <h2 class="mb-3">ABOUT Us</h2>
         <h1 class="mb-3" id="home"><span> Bb Center</span></h1>
         <p>
         Bb Center is a commercial website dedicated to Swiss watches.
