@@ -47,7 +47,7 @@ if (isset($_SESSION['us']) == false) {
                         </div>
                         <div class="col-sm-9">
                             <p>
-                                <img src="image/add.png" alt="Add new" width="16" height="16" border="0" />
+                                <img src="Image/add.png" alt="Add new" width="16" height="16" border="0" />
                                 <a href="?page=addshop"> Add</a>
                             </p>
                             <table id="tablecategory" class="table table-striped table-bordered" width="100">
