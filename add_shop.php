@@ -43,7 +43,7 @@ if (isset($_POST["btnAdd"])) {
 ?>
 
 <div class="container">
-    <h2>Adding Category</h2>
+    <h2>Adding Shop</h2>
     <form id="addbrand" name="addbrand" method="post" action="" class="form-horizontal" role="form" onsubmit="return addshop()">
         <div class="form-group">
             <label for="txtTen" class="col-sm-2 control-label">Shop Name(*): </label>
