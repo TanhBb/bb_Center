@@ -78,7 +78,7 @@
         if ($no <= 4) {
       ?>
           <div class="product text-center col-lg-3 col-md-4 col-12">
-            <img class="img-fluid mb-3" src="image/<?php echo $row['pro_image'] ?>" height="450" width="300">
+            <img class="img-fluid mb-3" src="Image/<?php echo $row['pro_image'] ?>" height="450" width="300">
             <div class="star">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
