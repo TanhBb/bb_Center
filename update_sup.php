@@ -31,7 +31,7 @@
     ?>
 
        <div class="container">
-           <h2> Updating Product Category</h2>
+           <h2> Updating Supplier</h2>
            <form id="updatebrand" name="updatebrand" method="post" action="" class="form-horizontal" role="form" onsubmit="return updatecat()">
                <div class="form-group">
                    <label for="txtTen" class="col-sm-2 control-label">Suplier ID(*): </label>
