@@ -55,7 +55,7 @@
               <a class="nav-link" href="?page=search&&gender=Women">Women</a>
             </li> -->
             <li class="nav-item">
-              <a class="nav-link" href="?page=management">Management</a>
+              <a class="nav-link" href="?page=management">Management133</a>
             </li>
             <li class="nav-item">
               <a href="?page=cart" class="nav-link bi bi-bag">Cart</a>
