@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bb Store</title>
+  <title>Secret Love</title>
   <!--Boostrap-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -30,7 +30,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light py-4 ">
       <div class="container-fluid mx-md-5 row">
         <div class="col-2">
-          <a href="index.php"><img src="Image/logo1.png" class="logo" alt="Logo" >
+          <a href="index.php"><img src="Image/love.png" sizes="auto" alt="Logo" >
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -40,13 +40,14 @@
         <div class="collapse navbar-collapse col-auto justify-content-center" id="navbarSupportedContent">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Home</a>
+             <a class="nav-link" href="index.php"> <span style="font-size:20px">Home</span></a>
+          
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="?page=content">Shop</a>
+              <a class="nav-link" href="?page=content"><span style="font-size:20px">Love Journey</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="?page=about">About</a>
+              <a class="nav-link" href="?page=about"><span style="font-size:20px">Journey Videos</span></a>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link" href="?page=search&&gender=Men">Men</a>
@@ -55,11 +56,9 @@
               <a class="nav-link" href="?page=search&&gender=Women">Women</a>
             </li> -->
             <li class="nav-item">
-              <a class="nav-link" href="?page=management">Management133</a>
+              <a class="nav-link" href="?page=management"><span style="font-size:20px">System</span></a>
             </li>
-            <li class="nav-item">
-              <a href="?page=cart" class="nav-link bi bi-bag">Cart</a>
-            </li>
+         
 
             <?php
             if (isset($_SESSION['us']) && $_SESSION['us'] != "") {
@@ -68,16 +67,16 @@
                 <a class="nav-link" href="?page=updatecus" id="btnUser"><i class="glyphicon glyphicon-user" style="margin-left:50px"></i> Welcome, <?php echo $_SESSION['us'] ?></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="?page=logout" id="btnlogout" class="glyphicon glyphicon-log-out">Logout <i class="bi bi-box-arrow-right"></i></a>
+                <a class="nav-link" href="?page=logout" id="btnlogout" class="glyphicon glyphicon-log-out"> <span style="font-size:20px">Logout</span> <i class="bi bi-box-arrow-right"></i></a>
               </li>
             <?php
             } else {
             ?>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="?page=register" id="btnRegister" style="margin-left:25px"><span style="font-size:20px">Register</span>&nbsp;<i class="bi bi-person-plus"></i></a>
+              </li> -->
               <li class="nav-item">
-                <a class="nav-link" href="?page=register" id="btnRegister" style="margin-left:25px">Register&nbsp;<i class="bi bi-person-plus"></i></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="?page=login" id="btnLogin">Login&nbsp;<i class="bi bi-box-arrow-in-right"></i></a>
+                <a class="nav-link" href="?page=login" id="btnLogin"><span style="font-size:20px">Login</span>&nbsp;<i class="bi bi-box-arrow-in-right"></i></a>
               </li>
             <?php
             }
@@ -140,12 +139,12 @@
 
 
     <!-- Footer boostrap -->
-    <footer class="text-center text-lg-start bg-light text-muted">
+    <footer class="text-center text-lg-start bg-light text-muted">  
       <!-- Section: Social media -->
       <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <!-- Left -->
         <div class="me-5 d-none d-lg-block">
-          <span><b>Connected with us on social networks:</b> </span>
+          <span><b>Connected with me on social networks:</b> </span>
         </div>
         <!-- Left -->
 
@@ -172,7 +171,7 @@
             <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
               <!-- Content -->
               <h6 class="text-uppercase fw-bold mb-4">
-                <i class="fas fa-gem me-3"></i>Bb Center
+                <i class="fas fa-gem me-3"></i>The Loving Journey
               </h6>
               <p>
                 Product quality and customer experience is the goal we always aim to develop.
@@ -184,19 +183,19 @@
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               <!-- Links -->
               <h6 class="text-uppercase fw-bold mb-4">
-                Brands
+                Some Thing
               </h6>
               <p>
-                <a href="#!" class="text-reset">Zenith</a>
+                <a href="#!" class="text-reset">Video</a>
               </p>
               <p>
-                <a href="#!" class="text-reset"> Breitling</a>
+                <a href="#!" class="text-reset"> Image</a>
               </p>
               <p>
-                <a href="#!" class="text-reset">Tissot</a>
+                <a href="#!" class="text-reset">Trip</a>
               </p>
               <p>
-                <a href="#!" class="text-reset">Certina</a>
+                <a href="#!" class="text-reset"></a>
               </p>
             </div>
             <!-- Grid column -->
@@ -253,3 +252,8 @@
 </div>
 
 </html>
+
+
+
+
+

@@ -1,108 +1,288 @@
 <div class="container-fluid">
-  <header>
-    <!-- Background image -->
-    <div class="p-5 text-center bg-image" style="
-      background-image: url(Image/bg.jpg);
-      height: 900px; background-size: 100% 130%;">
-      <div class="mask mt-5 m-5 p-5" style="background-color: rgba(0, 0, 0, 0.6);">
-        <div class=" mt-5 d-flex justify-content-center align-items-center h-100">
-          <div class="text-white">
-            <h2 class="mb-3">WELLCOME TO</h2>
-            <h1 class="mb-3" id="home"><span>BB CENTER</span></h1>
-            <h4 class="mb-3">The toys around your child can also contribute to changing their personality, choose the right product for your baby.</h4>
-            <a class="btn btn-outline-light btn-lg" href="?page=content" role="button">SHOP NOW</a>
-          </div>
-        </div>
+<style>
+    :root {
+      --orange: coral;
+    }
+    
+    section {
+      padding: 2rem 9%;
+    }
+    
+    header {
+      position: fixed;
+      margin: 0 12px 0 12px;
+    }
+    
+    .heading {
+      text-align: center;
+      font-size: 4rem;
+      color: #333;
+      padding: 1rem;
+      margin: 2rem 0;
+      background: rgba(209, 12, 12, 0.05);
+    }
+    
+    .heading span {
+      color: var(--orange);
+    }
+    
+    p.lowercaseText {
+      text-transform: lowercase;
+    }
+    
+    .btnhome {
+      display: inline-block;
+      margin-top: 1rem;
+      border-radius: 5rem;
+      background: rgb(19, 18, 18);
+      color: #fff;
+      padding: 0.9vmax 3.5vmax;
+      cursor: pointer;
+      font-size: 1.7vmax;
+    }
+    
+    .btnhome:hover {
+      background: var(--orange);
+    }
+    
+
+
+    
+    .btnab{
+      display: inline-block;
+      margin-top: 1rem;
+      border-radius: 3rem;
+      background: rgb(19, 18, 18);
+      color: #fff;
+      padding: 0.9vmax 3.5vmax;
+      cursor: pointer;
+      font-size: 0.8vmax;
+    }
+    
+    .btnab:hover {
+      background: var(--orange);
+    }
+    .home {
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .home .content {
+      max-width: 50rem;
+    }
+    
+    .home .content h3 {
+      font-size: 5vmax;
+      color: #333;
+    }
+    
+    .home .content span {
+      font-size: 2.5vmax;
+      color: var(--orange);
+      padding: 1rem 0;
+      line-height: 1.5;
+    }
+    
+    .home .content p {
+      font-size: 1.5rem;
+      color: #999;
+      padding: 1rem 0;
+      line-height: 1.5;
+    }
+    
+    .home .content h4 {
+      font-size: 1vmax;
+      color: rgb(19, 13, 13);
+    }
+    
+    .about .row {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding: 2rem 0 3rem;
+    }
+    
+    .about .row .video-container {
+      flex: 1 1 40rem;
+      position: relative;
+    }
+    
+    .about .row .video-container video {
+      width: 100%;
+      border: 1.5rem solid #fff;
+      border-radius: 0.5rem;
+      box-shadow: 0 0.5rem 1rem rgba(255, 187, 187, 0.1);
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .about .row .video-container h3 {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      background: #fff;
+      width: 100%;
+      padding: 1rem 2rem;
+      text-align: center;
+      mix-blend-mode: screen;
+    }
+    
+    .about .row .content {
+      flex: 1 1 40rem;
+    }
+    
+    .about .row .content h3 {
+      font-size: 3rem;
+      color: #333;
+    }
+    
+    .about .row .content p {
+      font-size: 1.5rem;
+      color: #999;
+      padding: 1rem 0 0.5rem;
+      line-height: 1.5;
+    }
+    
+    .icons-container {
+      background: #eee;
+      display: flex;
+
+      gap: 1rem;
+      padding-top: 3.5rem;
+      padding-bottom: 3.5rem;
+    }
+    
+    .icons-container .icons {
+      background: #fff;
+      border: 0.1rem solid rgba(0, 0, 0, 0.1);
+      padding: 1.8rem;
+      display: flex;
+      align-items: center;
+      flex: 1 1 18rem;
+    }
+    
+    .icons-container .icons img {
+      height: 5rem;
+      margin-right: 1rem;
+    }
+    
+    .icons-container .icons h3 {
+      color: #333;
+      padding-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+    
+    .icons-container .icons span {
+      color: #555;
+      font-size: 1.3rem;
+    }
+    
+    h2 {
+      color: #000;
+      font-size: 26px;
+      font-weight: 300;
+      text-align: center;
+      text-transform: uppercase;
+      position: relative;
+      margin-top: 30px;
+    }
+    
+    h2::after {
+      content: '';
+      width: 100px;
+      position: absolute;
+      margin: 0 auto;
+      height: 4px;
+      border-radius: 1px;
+      background: wheat;
+      left: 0;
+      right: 0;
+      bottom: -20px;
+    }
+  </style>
+  <!-- home section starts -->
+  <section class="home" id="home" style="background-image: url(Image/ban1.jpg)">
+    <div class="content">
+      <h3>The Love Journey</h3>
+      <span>Romantic, Funny &amp; Silly</span>
+      <h4>Love is something special, you can't see it, you can only feel it.</h4>
+      
+      <a href="?page=content" class="btn btnhome" role="button">GET STARTED</a>
+    </div>
+  </section>
+  <!-- home section ends -->
+
+  <!-- about section starts -->
+  <section class="about" id="about">
+    <h1 class="heading">
+      <span>Silly</span>
+      video
+    </h1>
+    <div class="row">
+      <div class="video-container">
+        <video src="Image/about.mp4" loop autoplay muted></video>
+        <h3 class="d-none d-md-block"></h3>
+      </div>
+      <div class="content">
+        <h3>Why is it special?</h3>
+        <p></p>
+        <p style="text-align:justify">What makes me happy looking back on the past is not how I changed, but who I changed myself with. I used to be a person who never cared about my appearance, But since you appeared, you have made me better in the eyes of others and more special in your eyes. I am so happy that I have had you by my side for the past 2 years. And I hope we will continue to grow and mature together in the future..</p>
+  
+         <a class="btn btnab" href="?page=about" > Watch </a>
       </div>
     </div>
-    <!-- Background image -->
-  </header>
+  </section>
+  <!-- about section ends -->
+
+  <!-- icons section starts -->
+  <div class="container text-center mt-5 py-5" >
+      <h5>The Limited Gift For You</h5>
+      <hr>
+      <p><b>Here you can receive very cute gifts prepared by your super lover</b></p>
+    </div>
+
+    
+  <section class="icons-container" id="new" class="container-fluid w-100" >
+
+  
+
+      <div class="one col-lg-4   p-0">
+        <img class="img-fluid" src="Image/g1.jpg" alt=" Gift One">
+        <div class="details">
+          <h3 style="color: black">First Gift</h3>
+          <a href="?page=content " ><button class="text-uppercase">  Open Now</button></a>
+        </div>
+      </div>
+
+    
+      <div class="one col-lg-4   p-0">
+        <img class="img-fluid" src="Image/g2.jpg " alt="Gift Two">
+        <div class="details">
+          <h3 style="color: black">Second Gift</h3>
+          <a href="?page=content"><button class="text-uppercase"> Open Now</button></a>
+        </div>
+      </div>
+
+
+   
+      <div class="one col-lg-4 p-0">
+        <img class="img-fluid" src="Image/g3.jpg" alt="Gift Three">
+        <div class="details">
+          <h3 style="color: black">Third Gift</h3>
+          <a href="?page=content"><button class="text-uppercase"> Open Now</button></a>
+        </div>
+      </div>
+
+  </section>
+  
+  <!-- icons section ends -->
   
   <br>
-
-  <!-- Brands
-  <section id="brand" class="container-fluid">
-    <div class="row">
-      <img class="img-fluid col-lg-2 col-md-4 col-6" src="Image/brand1.png" alt="brand1">
-      <img class="img-fluid col-lg-2 col-md-4 col-6" src="Image/bra2.png" alt="brand2">
-      <img class="img-fluid col-lg-2 col-md-4 col-6" src="Image/bra3.png" alt="brand3">
-      <img class="img-fluid col-lg-2 col-md-4 col-6" src="Image/bra4.png" alt="brand4">
-      <img class="img-fluid col-lg-2 col-md-4 col-6" src="Image/bra5.png" alt="brand5">
-      <img class="img-fluid col-lg-2 col-md-4 col-6" src="Image/bra6.png" alt="brand6">
-    </div>
-  </section>
-  <br> -->
-  <!--NEW-->
-  <section id="new" class="container-fluid w-100 ">
-    <div class="row p-0 m-0">
-      <div class="one col-lg-4 col-md-12 col-12 p-0">
-        <img class="img-fluid" src="Image/new.jpg" alt="">
-        <div class="details">
-          <h3 style="color: coral">New Product</h3>
-          <a href="?page=content " ><button class="text-uppercase">  Shop Now</button></a>
-        </div>
-      </div>
-      <div class="one col-lg-4 col-md-12 col-12 p-0">
-        <img class="img-fluid" src="Image/trend.jpg " alt="">
-        <div class="details">
-          <h3 style="color: coral">Best Saller</h3>
-          <a href="?page=content"><button class="text-uppercase"> Shop Now</button></a>
-        </div>
-      </div>
-      <div class="one col-lg-4 col-md-12 col-12 p-0">
-        <img class="img-fluid" src="Image/sale.jpg" alt="">
-        <div class="details">
-          <h3 style="color: coral">Sale of</h3>
-          <a href="?page=content"><button class="text-uppercase"> Shop Now</button></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  Poppular products
-  <section id="featured" class="my-5 pb-5">
-    <div class="container text-center mt-5 py-5">
-      <h5>The Limited Edition Toys</h5>
-      <hr>
-      <p><b>Here you can check out our new products with fair price on Bb Center</b></p>
-    </div>
-    <div class="row mx-auto container-fluid">
-      <?php
-      include_once("connection.php");
-      $result = pg_query($conn, "SELECT * FROM category c, product p WHERE c.cat_id = p.cat_id");
-      if (!$result) {
-        echo "$err";
-      }
-      $no = 1;
-      while ($row = pg_fetch_array($result)) {
-        if ($no <= 4) {
-      ?>
-          <div class="product text-center col-lg-3 col-md-4 col-12">
-            <img class="img-fluid mb-3" src="Image/<?php echo $row['pro_image'] ?>" height="450" width="300">
-            <div class="star">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-            </div>
-            <b>
-              <h8 class="p-name"><?php echo $row['pro_name'] ?>
-            </b></h8><br>
-            <h7 class="p-price"><?php echo $row['price'] ?>$</h7><br>
-            <div>
-              <a href="?page=viewdetail&&id=<?php echo $row['pro_id'] ?>"> <button class="buy-btn">View Details</button></a>
-            </div>
-
-          </div>
-      <?php
-          $no++;
-        }
-      }
-      ?>
-    </div>
-  </section>
-
 
 
   <!--Boostrap-->
